@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  timer-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: desktop-timer
+    volumes:
+      - .:/app
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_QPA_PLATFORM=offscreen
+    stdin_open: true
+    tty: true
+    command: python timer_app.py
